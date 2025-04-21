@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Upload and Display</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Upload Your Video</h1>
+    <form id="upload-form">
+        <label for="video-upload">Choose Video:</label>
+        <input type="file" id="video-upload" accept="video/*" required>
+        <button type="button" id="upload-button">Upload</button>
+    </form>
+    <h2>solo leveling s1 and 2 english</h2>
+    <div id="thumbnail-container"></div>
+
+    <script>
+        const uploadButton = document.getElementById("upload-button");
+        const videoUpload = document.getElementById("video-upload");
+        const thumbnailContainer = document.getElementById("thumbnail-container");
+
+        uploadButton.addEventListener("click", () => {
+            const file = videoUpload.files[0];
+            if (file) {
+                const videoElement = document.createElement("video");
+                videoElement.src = URL.createObjectURL(file);
+                videoElement.controls = true;
+                videoElement.width = 200;
+
+                const thumbnailDiv = document.createElement("div");
+                thumbnailDiv.className = "thumbnail";
+                thumbnailDiv.appendChild(videoElement);
+
+                thumbnailContainer.appendChild(thumbnailDiv);
+            } else {
+                alert("Please select a video to upload.");
+            }
+        });
+    </script>
+</body>
+</html>
